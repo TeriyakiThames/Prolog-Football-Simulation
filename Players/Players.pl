@@ -1,3 +1,4 @@
+% Run prolog in terminal: `& "C:\Program Files\swipl\bin\swipl.exe"`
 % Define 2 teams
 team(team_a).
 team(team_b).
@@ -11,10 +12,10 @@ goal_a(0, 50, 50, 150).
 goal_b(350, 400, 50, 150).
 
 % Define players for each teams
-% Example: player(teamName, playerName, position, stats(goalkeeping,defending,passing,attacking,speed,vision,stamina), position(x, y)).
+% Example: player(teamName, playerName, role, stats(goalkeeping,defending,passing,attacking,speed,vision,stamina), position(x, y)).
 
 % Team A players
-player(team_a, a1, gk, stats(90, 40, 35, 30, 30, 85, 80)).
+player(team_a, a1, gk, stats(90, 40, 35, 30, 30, 85, 80), position(0, 0)).
 player(team_a, a2, def, stats(15, 90, 60, 55, 70, 80, 85)).
 player(team_a, a3, def, stats(10, 85, 65, 55, 75, 80, 90)).
 player(team_a, a4, def, stats(15, 70, 80, 65, 80, 90, 85)).
@@ -38,19 +39,3 @@ player(team_b, b8, mid, stats(65, 60, 75, 90, 85, 80, 75)).
 player(team_b, b9, atk, stats(65, 60, 80, 80, 85, 80, 75)).
 player(team_b, b10, atk, stats(70, 65, 85, 85, 90, 85, 80)).
 player(team_b, b11, atk, stats(80, 85, 60, 55, 70, 75, 80)).
-
-% Deciding Actions
-% Attacking: Shooting
-should(shoot, Team, Player) :-
-    player(Team, Name, Position, stats(_, _, _,Attacking, Speed, Vision, _)),
-    (Position = forward; Position = midfielder),
-    Attacking >= 75,
-    Speed >= 80,
-    Vision >= 75,
-    % TODO: Add a way to find distance to ball and goal.
-    distanceBall >= ?,
-    distanceGoal >= ?.
-
-
-
-distance_to_goal(goal(X1, X2, Y1, Y2), Player) :-
