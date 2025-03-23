@@ -1,4 +1,5 @@
 # AI Project: Prolog Football Simulation
+Run SWIPL in VSCode Terminal: `& "C:\Program Files\swipl\bin\swipl.exe"`
 
 ## `Actions.pl`
 - Deciding each Actions:
